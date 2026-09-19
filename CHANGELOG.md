@@ -2,6 +2,10 @@
 
 ## 2.1.3 - 2026-06-02
 
+### Added
+
+- Added Swift Package Manager (SPM) support for iOS and macOS with `Package.swift` manifests while preserving CocoaPods compatibility.
+
 ### Changed
 
 - Expanded the package description in `pubspec.yaml` to satisfy pub.dev

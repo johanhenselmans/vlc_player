@@ -69,9 +69,17 @@ void main() {
     }
   });
 
-  test('Swift package manager does not replace official VLCKit pods', () {
-    expect(File('ios/vlc_player/Package.swift').existsSync(), isFalse);
-    expect(File('macos/vlc_player/Package.swift').existsSync(), isFalse);
+  test('Swift package manager packages exist for iOS and macOS', () {
+    final iosManifest = _fileText('ios/vlc_player/Package.swift');
+    final macosManifest = _fileText('macos/vlc_player/Package.swift');
+
+    expect(iosManifest, contains('name: "vlc_player"'));
+    expect(iosManifest, contains('.package(name: "FlutterFramework", path: "../FlutterFramework")'));
+    expect(iosManifest, contains('MobileVLCKit'));
+
+    expect(macosManifest, contains('name: "vlc_player"'));
+    expect(macosManifest, contains('.package(name: "FlutterFramework", path: "../FlutterFramework")'));
+    expect(macosManifest, contains('VLCKit'));
   });
 
   test('third-party notices are linked from README', () {

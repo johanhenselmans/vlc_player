@@ -56,7 +56,7 @@ Network playback requires internet access. The plugin manifest declares:
 
 The iOS implementation requires iOS 13 or newer.
 
-The iOS implementation depends on `MobileVLCKit`.
+The iOS implementation supports both Swift Package Manager and CocoaPods, depending on `MobileVLCKit`.
 
 HTTPS media URLs work without extra transport configuration. If your app plays
 non-HTTPS URLs, configure App Transport Security in the app's `Info.plist`.
@@ -65,7 +65,7 @@ non-HTTPS URLs, configure App Transport Security in the app's `Info.plist`.
 
 The macOS implementation requires macOS 10.15 or newer.
 
-The macOS implementation depends on `VLCKit`.
+The macOS implementation supports both Swift Package Manager and CocoaPods, depending on `VLCKit`.
 
 For sandboxed apps that play network media, enable the network client
 entitlement:
@@ -75,8 +75,9 @@ entitlement:
 <true/>
 ```
 
-Use CocoaPods `1.13.0` or newer so the VLCKit runtime path script phase runs
-reliably.
+When building with CocoaPods, use CocoaPods `1.13.0` or newer so the VLCKit
+runtime path script phase runs reliably. Swift Package Manager is supported
+out of the box.
 
 ### Windows
 
