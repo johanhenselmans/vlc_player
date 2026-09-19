@@ -12,15 +12,19 @@ let package = Package(
         .library(name: "vlc-player", targets: ["vlc_player"])
     ],
     dependencies: [
-        .package(name: "FlutterFramework", path: "../FlutterFramework"),
-        .package(url: "https://code.videolan.org/videolan/VLCKit.git", exact: "4.0.0-a24")
+        .package(name: "FlutterFramework", path: "../FlutterFramework")
     ],
     targets: [
+        .binaryTarget(
+            name: "VLCKit",
+            url: "https://github.com/johanhenselmans/vlc_player/releases/download/3.7.3/VLCKit.xcframework.zip",
+            checksum: "3e02386a3319306348cd80392e15079d921033e893d716b796cd9b4b7f00e511"
+        ),
         .target(
             name: "vlc_player",
             dependencies: [
                 .product(name: "FlutterFramework", package: "FlutterFramework"),
-                .product(name: "VLCKit", package: "VLCKit")
+                "VLCKit"
             ],
             resources: [
                 .process("PrivacyInfo.xcprivacy")
